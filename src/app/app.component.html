@@ -1,0 +1,9 @@
+<h1>{{ title }}</h1>
+
+<lib-card-list [defaultColumns]="defaultColumns" [source$]="sources$"></lib-card-list>
+<ng-container *libProvidePropertyDefValue="let element; id: 'id'">
+  {{ element.id }}
+</ng-container>
+<ng-container *libProvidePropertyDefValue="let element; id: 'title'">
+  {{ element.title }}
+</ng-container>
