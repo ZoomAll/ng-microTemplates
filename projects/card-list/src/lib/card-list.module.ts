@@ -14,4 +14,5 @@ import {RegisterPropertyDefService} from './register-property-def.service';
   providers: [RegisterPropertyDefService],
   exports: [CardListComponent, ProvidePropertyDefValueDirective]
 })
-export class CardListModule { }
+export class CardListModule {
+}

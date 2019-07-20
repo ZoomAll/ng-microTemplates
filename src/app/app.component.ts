@@ -7,7 +7,7 @@ import {Alias} from 'card-list';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [{ provide: Alias, useExisting: forwardRef(() => AppComponent) }]
+  providers: [{provide: Alias, useExisting: forwardRef(() => AppComponent)}]
 })
 export class AppComponent extends Alias<any> {
   title = 'card-list-example';
@@ -15,22 +15,28 @@ export class AppComponent extends Alias<any> {
   defaultColumns: DefaultColumn[] = [
     {
       id: 'id',
-      label: 'ID'
+      label: 'ID',
     },
     {
       id: 'title',
-      label: 'Title'
+      label: 'Title',
+    },
+    {
+      id: 'someField',
+      label: 'Some'
     }
   ];
 
   sources$ = of([
     {
       id: 1,
-      title: 'Hello'
+      title: 'Hello',
+      someField: 'burunduki'
     },
     {
       id: 2,
-      title: 'World'
+      title: 'World',
+      someField: 'kolokola'
     }
   ]);
 

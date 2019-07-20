@@ -15,4 +15,5 @@ import {CardListModule} from 'card-list';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

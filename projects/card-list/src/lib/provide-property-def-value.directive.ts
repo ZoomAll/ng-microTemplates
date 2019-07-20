@@ -15,9 +15,11 @@ export class ProvidePropertyDefValueDirective<T> implements OnInit {
     private template: TemplateRef<any>,
     private registerPropertyDefService: RegisterPropertyDefService<any>,
     @Optional() private parent: Alias<T[]>
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
+    console.log('libProvidePropertyDefValue, parent', this.parent);
     this.container.clear();
     this.registerPropertyDefService.setTemplateById(
       this.parent as ComponentInstance,
