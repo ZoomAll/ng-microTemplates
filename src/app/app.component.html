@@ -1,13 +1,25 @@
 <h1>{{ title }}</h1>
 
-<lib-card-list [defaultColumns]="defaultColumns" [source$]="sources$"></lib-card-list>
-<ng-container *libProvidePropertyDefValue="let element; id: 'id'">
-  {{ element.id }}
+<lib-card-list [defaultColumns]="defaultColumns" [sources]="sources$|async"></lib-card-list>
+<ng-container *libProvidePropertyDefValue="let sourceItem; uid: 'columnId'">
+  {{ sourceItem.columnId }}
 </ng-container>
-<ng-container *libProvidePropertyDefValue="let element; id: 'title'">
-  {{ element.title }}
-</ng-container>
-<ng-container *libProvidePropertyDefValue="let element; id: 'someField'">
-  {{ element.someField }}
+<ng-template libProvidePropertyDefValue [libProvidePropertyDefValueUid]="'someField'" let-sourceItem>
+  {{ sourceItem.someField }}
   <p>hello</p>
+</ng-template>
+<ng-container *libProvidePropertyDefValue="let sourceItem uid 'title'">
+  {{ sourceItem.title }} 77
 </ng-container>
+
+<!--<ng-template libProvidePropertyDefValue [libProvidePropertyDefValueUid]="'columnId'" let-sourceItem>-->
+<!--  {{ sourceItem.columnId }}-->
+<!--</ng-template>-->
+<!--<ng-template libProvidePropertyDefValue [libProvidePropertyDefValueUid]="'title'" let-sourceItem>-->
+<!--  {{ sourceItem.title }}-->
+<!--  <p>1223</p>-->
+<!--</ng-template>-->
+<!--<ng-container *libProvidePropertyDefValue="let sourceItem; uid: 'someField'">-->
+<!--  {{ sourceItem.someField }}-->
+<!--  <p>hello</p>-->
+<!--</ng-container>-->

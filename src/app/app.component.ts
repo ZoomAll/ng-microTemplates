@@ -14,7 +14,7 @@ export class AppComponent extends Alias<any> {
 
   defaultColumns: DefaultColumn[] = [
     {
-      id: 'id',
+      id: 'columnId',
       label: 'ID',
     },
     {
@@ -29,12 +29,12 @@ export class AppComponent extends Alias<any> {
 
   sources$ = of([
     {
-      id: 1,
+      columnId: 1,
       title: 'Hello',
       someField: 'burunduki'
     },
     {
-      id: 2,
+      columnId: 2,
       title: 'World',
       someField: 'kolokola'
     }

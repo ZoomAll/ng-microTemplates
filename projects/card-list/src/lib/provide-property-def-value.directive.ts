@@ -8,7 +8,7 @@ import { ComponentInstance } from '@angular/core/src/render3/interfaces/player';
 })
 export class ProvidePropertyDefValueDirective<T> implements OnInit {
   @Input()
-  libProvidePropertyDefValueId: string;
+  libProvidePropertyDefValueUid: string;
 
   constructor(
     private template: TemplateRef<any>,
@@ -22,7 +22,7 @@ export class ProvidePropertyDefValueDirective<T> implements OnInit {
     this.viewContainer.clear();
     this.registerPropertyDefService.setTemplateById(
       this.parent as ComponentInstance,
-      this.libProvidePropertyDefValueId,
+      this.libProvidePropertyDefValueUid,
       this.template
     );
   }
