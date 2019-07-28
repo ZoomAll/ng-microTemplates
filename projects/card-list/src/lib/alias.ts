@@ -1,5 +1,5 @@
-import { DefaultColumn } from 'card-list';
+import { ColumnDefinition } from 'card-list';
 
 export abstract class Alias<T> {
-  abstract defaultColumns: DefaultColumn[];
+  abstract defaultColDefs: ColumnDefinition[];
 }

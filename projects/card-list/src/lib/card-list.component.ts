@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {DefaultColumn} from './default-column';
+import {ColumnDefinition} from './column-definition';
 import {ComponentInstance} from '@angular/core/src/render3/interfaces/player';
 import {Alias} from './alias';
 import {RegisterPropertyDefService} from './register-property-def.service';
@@ -7,28 +7,28 @@ import {RegisterPropertyDefService} from './register-property-def.service';
 @Component({
   selector: 'lib-card-list',
   template: `
-  <mat-card *ngFor="let source; of sources">
-    <ul>
-      <li *ngFor="let key; of displayedColumnIds">
-        <span>{{ findColumnById(key)?.label }}</span>
-        <span>
+      <mat-card *ngFor="let columnContexts; of columnTemplateContexts">
+          <ul>
+              <li *ngFor="let columnId; of displayedColumnIds">
+                  <span>{{ findColumnDefById(columnId)?.label }}</span>
+                  <span>
           <ng-container
-            [ngTemplateOutlet]="findColumnById(key)?.template || default"
-            [ngTemplateOutletContext]="{ $implicit: source }"
+                  [ngTemplateOutlet]="findColumnDefById(columnId)?.template || defaultColumnTemplate"
+                  [ngTemplateOutletContext]="columnContexts[columnId]"
           ></ng-container>
         </span>
-      </li>
-    </ul>
-  </mat-card>
-  <ng-template #default></ng-template>
+              </li>
+          </ul>
+      </mat-card>
+      <ng-template #defaultColumnTemplate></ng-template>
   `,
   styles: [
     'mat-card { margin: 10px; }'
   ]
 })
 export class CardListComponent<T> implements OnInit, AfterViewInit {
-  @Input() defaultColumns: DefaultColumn[];
-  @Input() sources: T[] = [];
+  @Input() columnDefinitions: ColumnDefinition[];
+  @Input() columnTemplateContexts: T[] = [];
 
   displayedColumnIds = [];
 
@@ -37,15 +37,15 @@ export class CardListComponent<T> implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.displayedColumnIds = this.defaultColumns.map(c => c.id);
+    this.displayedColumnIds = this.columnDefinitions.map(c => c.id);
   }
 
-  findColumnById(columnId: string): DefaultColumn {
-    return this.defaultColumns.find(column => column.id === columnId);
+  findColumnDefById(columnId: string): ColumnDefinition {
+    return this.columnDefinitions.find(column => column.id === columnId);
   }
 
   ngAfterViewInit(): void {
-    this.defaultColumns = this.defaultColumns
+    this.columnDefinitions = this.columnDefinitions
       .map(column =>
         Object.assign(
           column,

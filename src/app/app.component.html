@@ -1,6 +1,10 @@
 <h1>{{ title }}</h1>
 
-<lib-card-list [defaultColumns]="defaultColumns" [sources]="sources$|async"></lib-card-list>
+<lib-card-list
+  [columnDefinitions]="defaultColDefs"
+  [columnTemplateContexts]="columnTemplateContext$|async"
+></lib-card-list>
+
 <ng-container *libProvidePropertyDefValue="let sourceItem; uid: 'columnId'">
   {{ sourceItem.columnId }}
 </ng-container>

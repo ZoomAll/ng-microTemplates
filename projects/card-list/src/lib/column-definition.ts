@@ -1,6 +1,6 @@
 import { TemplateRef } from '@angular/core';
 
-export interface DefaultColumn {
+export interface ColumnDefinition {
   label: string;
   id: string;
   someFieldTitle?: string;
